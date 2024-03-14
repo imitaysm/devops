@@ -1,0 +1,46 @@
+# values.yaml
+
+# Paramètres globaux du chart
+global:
+  # Nombre de réplicas par défaut pour les déploiements
+  replicas: 3
+
+# Configuration spécifique pour l'application frontend
+frontend:
+  # Port sur lequel l'application frontend écoute
+  port: 80
+  # Chemin racine de l'application frontend
+  rootPath: /app
+  # Configuration des variables d'environnement pour l'application frontend
+  env:
+    - name: ENV_VAR_FRONTEND_API_URL
+      value: http://api.example.com
+
+# Configuration spécifique pour l'application backend
+backend:
+  # Port sur lequel l'application backend écoute
+  port: 8080
+  # Configuration des variables d'environnement pour l'application backend
+  env:
+    - name: ENV_VAR_BACKEND_DB_HOST
+      value: db.example.com
+    - name: ENV_VAR_BACKEND_DB_PORT
+      value: "5432"  # Notez que les valeurs sont des chaînes de caractères
+    - name: ENV_VAR_BACKEND_DB_USER
+      value: admin
+    - name: ENV_VAR_BACKEND_DB_PASSWORD
+      value: password123
+
+# Configuration des ports utilisés par les différents services
+ports:
+  # Ports utilisés par l'application frontend
+  frontend:
+    - name: HTTP
+      port: 80
+      protocol: TCP
+
+  # Ports utilisés par l'application backend
+  backend:
+    - name: HTTP
+      port: 8080
+      protocol: TCP
